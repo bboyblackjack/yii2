@@ -45,6 +45,9 @@ return [
             'rules' => [
                 'GET /api/lichnost' => 'lichnost/get-lichnost',
                 'POST /api/lichnost' => 'lichnost/add-lichnost',
+                'GET /api/lichnost/<id>' => 'lichnost/get-lichnost-by-id',
+                'PUT /api/lichnost/<id>' => 'lichnost/update-lichnost',
+                'DELETE /api/lichnost/<id>' => 'lichnost/delete-lichnost',
             ],
         ],
     ],

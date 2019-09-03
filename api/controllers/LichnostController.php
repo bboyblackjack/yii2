@@ -12,24 +12,63 @@ class LichnostController extends ActiveController
 
     public function actionGetLichnost()
     {
-        \Yii::$app->response->format = Response::FORMAT_JSON;
-
-        return Lichnost::find()->all();
+        return $this->asJson(Lichnost::find()->all());
     }
 
     public function actionAddLichnost()
     {
-        \Yii::$app->response->format = Response::FORMAT_JSON;
         $mdl = new Lichnost();
         $mdl->attributes = \Yii::$app->request->get();
 
-        if($mdl->validate())
+        if($mdl->validate() && $mdl->save())
         {
-            return 'okay';
+            return $this->asJson('Lichnost successfully created');
         }
         else
         {
-            return $mdl->errors;
+            return $this->asJson($mdl->errors);
+        }
+    }
+
+    public function actionGetLichnostById($id)
+    {
+        return $this->asJson(Lichnost::findOne($id));
+    }
+
+    public function actionUpdateLichnost($id)
+    {
+        $mdl = Lichnost::findOne($id);
+
+        if($mdl)
+        {
+            $mdl->attributes = \Yii::$app->request->get();
+
+            if($mdl->validate())
+            {
+                $mdl->save();
+                return $this->asJson('Lichnost successfully updated');
+            }
+            else
+            {
+                return $this->asJson($mdl->errors);
+            }
+        }
+        else
+        {
+            return $this->asJson("Lichnost undefined");
+        }
+    }
+
+    public function actionDeleteLichnost($id)
+    {
+        if($l = Lichnost::findOne($id))
+        {
+            $l->delete();
+            return $this->asJson("Lichnost $id successfull deleted");
+        }
+        else
+        {
+            return $this->asJson("Lichnost undefined");
         }
     }
 }
