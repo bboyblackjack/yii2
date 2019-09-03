@@ -68,6 +68,10 @@ class LichnostController extends ActiveController
     {
         if($l = Lichnost::findOne($id))
         {
+            foreach($l->dokuments as $d)
+            {
+                $d->delete();
+            }
             $l->delete();
             return $this->asJson("Lichnost $id successfull deleted");
         }
