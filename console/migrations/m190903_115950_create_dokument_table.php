@@ -15,7 +15,7 @@ class m190903_115950_create_dokument_table extends Migration
         $this->createTable('{{%dokument}}', [
             'id' => $this->primaryKey(),
             'series' => $this->string(6),
-            'number' => $this->string()->notNull(),
+            'number' => $this->string(10)->notNull(),
             'issue_date' => $this->date()->notNull(),
             'type' => $this->string(255)->notNull(),
             'lichnost_id' => $this->integer()->notNull(),

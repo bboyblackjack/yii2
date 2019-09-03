@@ -15,4 +15,9 @@ class Lichnost extends ActiveRecord
             ['birthday', 'date', 'format' => 'php:Y-m-d']
         ];
     }
+
+    public function getDokuments()
+    {
+        return $this->hasMany(Dokument::className(), ['lichnost_id' => 'id']);
+    }
 }

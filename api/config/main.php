@@ -48,6 +48,12 @@ return [
                 'GET /api/lichnost/<id>' => 'lichnost/get-lichnost-by-id',
                 'PUT /api/lichnost/<id>' => 'lichnost/update-lichnost',
                 'DELETE /api/lichnost/<id>' => 'lichnost/delete-lichnost',
+
+                'GET /api/lichnost/<id>/dokument' => 'dokument/get-lichnost-documents',
+                'POST /api/lichnost/<id>/dokument' => 'dokument/add-lichnost-document',
+                'GET /api/lichnost/<lid>/dokument/<did>' => 'dokument/get-lichnost-document-by-id',
+                'PUT /api/lichnost/<lid>/dokument/<did>' => 'dokument/update-lichnost-document',
+                'DELETE /api/lichnost/<lid>/dokument/<did>' => 'dokument/delete-lichnost-document',
             ],
         ],
     ],

@@ -10,11 +10,13 @@ class LichnostController extends ActiveController
 {
     public $modelClass = 'api\models\Lichnost';
 
+    /*Получает список всех личностей*/
     public function actionGetLichnost()
     {
         return $this->asJson(Lichnost::find()->all());
     }
 
+    /*Добавляет личность*/
     public function actionAddLichnost()
     {
         $mdl = new Lichnost();
@@ -30,11 +32,13 @@ class LichnostController extends ActiveController
         }
     }
 
+    /*Получает личность по id*/
     public function actionGetLichnostById($id)
     {
         return $this->asJson(Lichnost::findOne($id));
     }
 
+    /*Обновляет личность*/
     public function actionUpdateLichnost($id)
     {
         $mdl = Lichnost::findOne($id);
@@ -59,6 +63,7 @@ class LichnostController extends ActiveController
         }
     }
 
+    /*Удаляет личность*/
     public function actionDeleteLichnost($id)
     {
         if($l = Lichnost::findOne($id))
