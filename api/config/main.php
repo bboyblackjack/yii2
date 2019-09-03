@@ -14,6 +14,9 @@ return [
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-api',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser'
+            ]
         ],
         'user' => [
             'identityClass' => 'common\models\User',
@@ -36,14 +39,14 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'GET /api/lichnost' => 'lichnost/get-lichnost',
+                'POST /api/lichnost' => 'lichnost/add-lichnost',
             ],
         ],
-        */
     ],
     'params' => $params,
 ];
